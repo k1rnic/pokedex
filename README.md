@@ -1,2 +1,2 @@
-# pokemon-desc
+# pokemon-desk
 React pro marathon
