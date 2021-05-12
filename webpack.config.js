@@ -4,9 +4,9 @@ const NODE_ENV = process.env.NODE_ENV;
 
 module.exports = {
   mode: NODE_ENV ? NODE_ENV : 'development',
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: path.resolve(__dirname, 'src/index.tsx'),
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+    extensions: ['.js', '.ts', '.tsx', '.json'],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -16,6 +16,7 @@ module.exports = {
     rules: [
       {
         test: /\.[tj]sx?$/,
+        exclude: /node_modules/,
         use: ['ts-loader'],
       },
       {
@@ -28,7 +29,7 @@ module.exports = {
               modules: {
                 mode: 'local',
                 localIdentName: '[name]__[local]__[hash:base64:5]',
-                auto: /\.modules\.\w+$/i,
+                auto: /\.module\.\w+$/i,
               },
             },
           },
@@ -44,7 +45,6 @@ module.exports = {
   ],
   devServer: {
     port: 3000,
-    open: true,
     hot: true,
   },
   devtool: 'source-map',
