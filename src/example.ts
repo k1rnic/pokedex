@@ -2,10 +2,9 @@
 
 // TASK #1
 
-const concat = (...parts: string[]) => parts.reduce((acc, str) => acc + str, '');
+const concat = (partOne: string, partTwo: string) => partOne + partTwo;
 
 // TASK #2
-
 interface UselessInfo {
   howIDoIt: string;
   someArray: Array<string | number>;
@@ -20,14 +19,12 @@ const myHomeTask: UselessInfo = {
 
 // TASK #3
 
-type ReduceFn<T> = <T1>(fn: (acc: T1, value: T) => T1, initialValue: T1) => T1;
+type ReduceFn<T> = <T1>(fn: (acc: T1, value: T, i?: number, arr?: T[]) => T1, initialValue: T1) => T1;
 
 interface Arr<T> {
   [index: number]: T;
   reduce: ReduceFn<T>;
 }
 
-const map = (acc: string, value: string) => acc + value;
-
 const arr: Arr<string> = ['Hello World', '!'];
-const mappedArr = arr.reduce(map, '');
+const result = arr.reduce(concat, '');
