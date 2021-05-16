@@ -1,9 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const NODE_ENV = process.env.NODE_ENV;
+
+const { NODE_ENV } = process.env;
 
 module.exports = {
-  mode: NODE_ENV ? NODE_ENV : 'development',
+  mode: NODE_ENV || 'development',
   entry: path.resolve(__dirname, 'src/index.tsx'),
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.json'],
@@ -36,6 +37,26 @@ module.exports = {
           'sass-loader',
         ],
       },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack', 'url-loader'],
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/',
+            },
+          },
+        ],
+      },
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        use: ['url-loader'],
+      },
     ],
   },
   plugins: [
@@ -43,6 +64,11 @@ module.exports = {
       template: path.resolve(__dirname, 'public/index.html'),
     }),
   ],
+  watch: true,
+  watchOptions: {
+    ignored: /node_modules/,
+    poll: 1000,
+  },
   devServer: {
     port: 3000,
     hot: true,

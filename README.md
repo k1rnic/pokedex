@@ -1,3 +1,3 @@
-# pokemon-desk
+# pokedex
 
 React pro marathon

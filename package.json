@@ -1,9 +1,9 @@
 {
-  "name": "pokemon-desk",
+  "name": "pokedex",
   "version": "1.0.0",
   "description": "React pro marathon",
   "main": "index.js",
-  "repository": "https://github.com/k1rnic/pokemon-desk.git",
+  "repository": "https://github.com/k1rnic/pokedex.git",
   "author": "k1rnic <knikolskiy.io@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -19,6 +19,7 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@svgr/webpack": "^5.5.0",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.4",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
@@ -33,6 +34,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "4.5.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
@@ -42,6 +44,7 @@
     "style-loader": "2.0.0",
     "ts-loader": "8.2.0",
     "typescript": "4.0.3",
+    "url-loader": "^4.1.1",
     "webpack": "4.44.2",
     "webpack-cli": "3.3.12",
     "webpack-dev-server": "3.11.0"

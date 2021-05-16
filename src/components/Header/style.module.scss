@@ -1,0 +1,23 @@
+@import '../../styles/variables';
+
+.root {
+  height: 93px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 16px 0px #011c4033;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1125px;
+  height: 63px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pokemonLogo {
+  width: 158px;
+  height: 63px;
+}

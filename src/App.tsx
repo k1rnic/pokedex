@@ -1,5 +1,10 @@
-import cn from 'classnames';
 import React from 'react';
-import classes from './App.module.scss';
+import Header from './components/Header';
+import Home from './pages/Home';
 
-export default () => <div className={cn(classes.headers)}>This is App root</div>;
+export default () => (
+  <>
+    <Header />
+    <Home />
+  </>
+);
