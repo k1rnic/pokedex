@@ -1,0 +1,15 @@
+.contentWrap {
+  display: flex;
+}
+
+.contentText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.contentParallax {
+  display: flex;
+  align-items: center;
+}
