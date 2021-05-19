@@ -5,7 +5,13 @@
   margin-right: -159px;
 }
 
-.smallPokeBall {
+.pokeBall {
+  position: absolute;
+  top: 0%;
+  right: -17%;
+}
+
+.pokeBallBig {
   position: absolute;
   top: 1%;
   left: 1%;
@@ -21,12 +27,6 @@
   position: absolute;
   left: 49.86%;
   top: 0%;
-}
-
-.pokeBall {
-  position: absolute;
-  top: 0%;
-  right: -17%;
 }
 
 .pikachu {

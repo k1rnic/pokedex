@@ -1,11 +1,11 @@
-@import '../../styles/variables';
-
 .root {
   height: 93px;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0px 4px 16px 0px #011c4033;
+  background-color: var(--third);
+  z-index: 99;
 }
 
 .wrap {
