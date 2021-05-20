@@ -1,0 +1,48 @@
+import React from 'react';
+import { IPokemon } from '../../interfaces/pokemon';
+import Typography from '../Typography';
+import s from './style.module.scss';
+
+type Props = {
+  pokemon: IPokemon;
+};
+
+const PokemonCard = ({ pokemon }: Props) => {
+  const { name, img, stats, types } = pokemon;
+
+  return (
+    <div className={s.root}>
+      <div className={s.infoWrap}>
+        <Typography variant="h4" className={s.pokemonName}>
+          {name}
+        </Typography>
+
+        <div className={s.statWrap}>
+          <div className={s.statItem}>
+            <div className={s.statValue}>{stats.attack}</div>
+            Attack
+          </div>
+
+          <div className={s.statItem}>
+            <div className={s.statValue}>{stats.defense}</div>
+            Defense
+          </div>
+        </div>
+
+        <div className={s.labelWrap}>
+          {types.map((type) => (
+            <span key={type} className={s.label}>
+              {type}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className={s.pictureWrap}>
+        <img src={img} alt={name} />
+      </div>
+    </div>
+  );
+};
+
+export default PokemonCard;

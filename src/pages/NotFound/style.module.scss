@@ -1,0 +1,34 @@
+.root {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--danger);
+}
+
+.notFoundWrap {
+  position: relative;
+}
+
+.notFoundCode {
+  font-size: 700px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+
+.notFoundText {
+  font-size: 48px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+.frontImg {
+  position: absolute;
+  top: 120px;
+}

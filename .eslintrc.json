@@ -21,10 +21,12 @@
   },
   "plugins": [],
   "rules": {
+    "camelcase": "off",
     "no-use-before-define": "off",
     "no-console": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
+    "react/jsx-props-no-spreading": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -35,7 +37,15 @@
     ],
     "react/prop-types": "off",
     "react/require-default-props": "off",
-    "react/no-array-index-key": "off"
+    "react/no-array-index-key": "off",
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   },
   "settings": {
     "import/resolver": {

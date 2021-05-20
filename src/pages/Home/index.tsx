@@ -1,18 +1,18 @@
 import cn from 'classnames';
 import React from 'react';
 import Button from '../../components/Button';
-import Heading from '../../components/Heading';
 import HomeBackground from '../../components/HomeBackground';
 import Layout from '../../components/Layout';
+import Typography from '../../components/Typography';
 import s from './style.module.scss';
 
 const Home = () => (
   <Layout className={cn(s.contentWrap)}>
     <div className={s.contentText}>
-      <Heading variant={1}>
+      <Typography variant="h1">
         <b>Find</b> all your favorite <b>Pokemon</b>
-      </Heading>
-      <Heading variant={3}>You can know the type of Pokemon, its strengths, disadvantages and abilities</Heading>
+      </Typography>
+      <Typography variant="h3">You can know the type of Pokemon, its strengths, disadvantages and abilities</Typography>
       <Button color="success" onClick={console.log}>
         See pokemons
       </Button>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { ReactComponent as PokemonLogo } from '../../assets/pokemon-logo.svg';
-import NAV_ITEMS from '../../constants/nav-items';
+import { ReactComponent as PokemonLogo } from '../../assets/Logo.svg';
+import { NAV_MENU } from '../../routes';
 import NavBar from '../NavBar';
 import s from './style.module.scss';
 
@@ -10,7 +10,7 @@ const Header = () => (
       <div className={s.pokemonLogo}>
         <PokemonLogo />
       </div>
-      <NavBar items={NAV_ITEMS} />
+      <NavBar items={NAV_MENU} />
     </div>
   </div>
 );

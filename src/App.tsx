@@ -1,10 +1,18 @@
+import { useRoutes } from 'hookrouter';
 import React from 'react';
 import Header from './components/Header';
-import Home from './pages/Home';
+import NotFound from './pages/NotFound';
+import routes from './routes';
 
-export default () => (
-  <>
-    <Header />
-    <Home />
-  </>
-);
+export default () => {
+  const RoutedView = useRoutes(routes);
+
+  return RoutedView ? (
+    <>
+      <Header />
+      {RoutedView}
+    </>
+  ) : (
+    <NotFound />
+  );
+};
