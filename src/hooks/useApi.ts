@@ -1,26 +1,21 @@
 import { useEffect, useState } from 'react';
-import config from '../config';
-
-type ApiEndpoint = keyof typeof config['endpoints'];
+import { ApiEndpoint } from '../config';
+import req from '../utils/req';
 
 const useApi = <T>(endpoint: ApiEndpoint) => {
-  const url = `${config.apiUrl}/${config.endpoints[endpoint]}`;
-
-  const [data, setData] = useState<T>({} as T);
+  const [data, setData] = useState<T>();
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     try {
-      fetch(url)
-        .then((res) => res.json())
-        .then(setData);
+      req<T>(endpoint).then(setData);
     } catch (e) {
       setIsError(true);
     } finally {
       setIsLoading(false);
     }
-  }, [url]);
+  }, [endpoint]);
 
   return { data, isLoading, isError };
 };

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import Layout from '../../components/Layout';
 import PokemonCard from '../../components/PokemonCard';
 import useApi from '../../hooks/useApi';
@@ -14,11 +14,8 @@ interface IPokemonData {
 }
 
 const Pokedex: FC = () => {
-  const {
-    data: { pokemons = [] },
-    isLoading,
-    isError,
-  } = useApi<IPokemonData>('getPokemons');
+  const { data, isLoading, isError } = useApi<IPokemonData>('getPokemons');
+  const pokemons = useMemo(() => data?.pokemons || [], [data]);
 
   const renderCards = () => {
     if (isError) {
