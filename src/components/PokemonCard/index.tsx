@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import React from 'react';
 import { IPokemon } from '../../interfaces/pokemon';
 import Typography from '../Typography';
@@ -31,7 +32,7 @@ const PokemonCard = ({ pokemon }: Props) => {
 
         <div className={s.labelWrap}>
           {types.map((type) => (
-            <span key={type} className={s.label}>
+            <span key={type} className={cn(s.label, s[type])}>
               {type}
             </span>
           ))}
@@ -45,4 +46,4 @@ const PokemonCard = ({ pokemon }: Props) => {
   );
 };
 
-export default PokemonCard;
+export default React.memo(PokemonCard);

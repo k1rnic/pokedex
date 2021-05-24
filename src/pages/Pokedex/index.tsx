@@ -1,19 +1,34 @@
-import React from 'react';
+import React, { FC, useMemo } from 'react';
 import Layout from '../../components/Layout';
 import PokemonCard from '../../components/PokemonCard';
-import usePokemons from '../../hooks/usePokemons';
+import useApi from '../../hooks/useApi';
+import { IPokemon } from '../../interfaces/pokemon';
 import s from './style.module.scss';
 
-const Pokedex = () => {
-  const pokemons = usePokemons();
+interface IPokemonData {
+  total: number;
+  count: number;
+  offset: number;
+  limit: number;
+  pokemons: IPokemon[];
+}
 
-  return (
-    <Layout className={s.root}>
-      {pokemons.map((pokemon) => (
-        <PokemonCard key={pokemon.id} pokemon={pokemon} />
-      ))}
-    </Layout>
-  );
+const Pokedex: FC = () => {
+  const { data, isLoading, isError } = useApi<IPokemonData>('getPokemons');
+  const pokemons = useMemo(() => data?.pokemons || [], [data]);
+
+  const renderCards = () => {
+    if (isError) {
+      return <span>Something went wrong</span>;
+    }
+    if (isLoading) {
+      return <span>Loading...</span>;
+    }
+
+    return pokemons.map((pokemon) => <PokemonCard key={pokemon.id} pokemon={pokemon} />);
+  };
+
+  return <Layout className={s.root}>{renderCards()}</Layout>;
 };
 
 export default Pokedex;
