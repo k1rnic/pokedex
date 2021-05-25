@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useMemo, useState } from 'react';
+import React, { FC, useMemo, useState } from 'react';
 import Layout from '../../components/Layout';
 import PokemonCard from '../../components/PokemonCard';
 import SearchBar from '../../components/SearchBar';
@@ -15,8 +15,16 @@ interface IPokemonData {
   pokemons: IPokemon[];
 }
 
+type PokemonDataQuery = Partial<
+  {
+    name?: string;
+  } & Omit<IPokemonData, 'pokemons'>
+>;
+
 const Pokedex: FC = () => {
-  const [query, setQuery] = useState({});
+  const [query, setQuery] = useState<PokemonDataQuery>({
+    limit: 9,
+  });
 
   const { data, isLoading, isError } = useApi<IPokemonData>('getPokemons', query);
 
@@ -24,7 +32,10 @@ const Pokedex: FC = () => {
   const totalCount = useMemo(() => data?.total, [data]);
 
   const handleSearch = (searchValue: string) => {
-    setQuery(searchValue ? { name: searchValue } : {});
+    setQuery((state) => ({
+      ...state,
+      name: searchValue,
+    }));
   };
 
   const renderCards = () => {

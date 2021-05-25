@@ -8,14 +8,18 @@ const useApi = <T>(endpoint: ApiEndpoint, query?: Record<string, string | number
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    try {
-      setIsLoading(true);
-      req<T>(endpoint, query).then(setData);
-    } catch (e) {
-      setIsError(true);
-    } finally {
-      setIsLoading(false);
-    }
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const response = await req<T>(endpoint, query);
+        setData(response);
+      } catch (error) {
+        setIsError(true);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
   }, [endpoint, query]);
 
   return { data, isLoading, isError };

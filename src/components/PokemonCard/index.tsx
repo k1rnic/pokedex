@@ -11,6 +11,8 @@ type Props = {
 const PokemonCard = ({ pokemon }: Props) => {
   const { name, img, stats, types } = pokemon;
 
+  const getPokemonColor = (type: string) => `var(--pokemon-${type})`;
+
   return (
     <div className={s.root}>
       <div className={s.infoWrap}>
@@ -32,14 +34,14 @@ const PokemonCard = ({ pokemon }: Props) => {
 
         <div className={s.labelWrap}>
           {types.map((type) => (
-            <span key={type} className={cn(s.label, s[type])}>
+            <span key={type} className={cn(s.label, s[type])} style={{ backgroundColor: getPokemonColor(type) }}>
               {type}
             </span>
           ))}
         </div>
       </div>
 
-      <div className={s.pictureWrap}>
+      <div className={s.pictureWrap} style={{ backgroundColor: getPokemonColor(types[0]) }}>
         <img src={img} alt={name} />
       </div>
     </div>
