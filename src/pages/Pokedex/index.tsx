@@ -38,17 +38,6 @@ const Pokedex: FC = () => {
     }));
   };
 
-  const renderCards = () => {
-    if (isError) {
-      return <span>Something went wrong</span>;
-    }
-    if (isLoading) {
-      return <span>Loading...</span>;
-    }
-
-    return pokemons.map((pokemon) => <PokemonCard key={pokemon.id} pokemon={pokemon} />);
-  };
-
   return (
     <Layout className={s.root}>
       <Typography variant="p" className={s.title}>
@@ -57,7 +46,15 @@ const Pokedex: FC = () => {
       <div className={s.searchWrap}>
         <SearchBar onSearch={handleSearch} />
       </div>
-      <div className={s.pokemonCardsWrap}>{renderCards()}</div>
+
+      {isError && <span>Something went wrong</span>}
+      {isLoading && <span>Loading...</span>}
+
+      <div className={s.pokemonCardsWrap}>
+        {pokemons.map((pokemon) => (
+          <PokemonCard key={pokemon.id} pokemon={pokemon} />
+        ))}
+      </div>
     </Layout>
   );
 };

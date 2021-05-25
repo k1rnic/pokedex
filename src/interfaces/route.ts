@@ -1,14 +1,16 @@
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 
 export enum AppRoute {
   Home = '/',
   Pokedex = '/pokedex',
+  PokemonDetails = '/pokedex/:id',
   Legendaries = '/legendaries',
   Docs = '/documentation',
 }
 
 export interface IRoute {
-  label: string;
+  label?: string;
   route: AppRoute;
-  component: ReactNode;
+  component: (props?: PropsWithChildren<any>) => JSX.Element;
+  showInNav: boolean;
 }

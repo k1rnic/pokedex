@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import { navigate } from 'hookrouter';
 import React from 'react';
 import { IPokemon } from '../../interfaces/pokemon';
 import Typography from '../Typography';
@@ -9,12 +10,12 @@ type Props = {
 };
 
 const PokemonCard = ({ pokemon }: Props) => {
-  const { name, img, stats, types } = pokemon;
+  const { id, name, img, stats, types } = pokemon;
 
   const getPokemonColor = (type: string) => `var(--pokemon-${type})`;
 
   return (
-    <div className={s.root}>
+    <div className={s.root} onClick={() => navigate(`pokedex/${id}`)}>
       <div className={s.infoWrap}>
         <Typography variant="h4" className={s.pokemonName}>
           {name}

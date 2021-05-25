@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ApiEndpoint } from '../config';
 import req from '../utils/req';
 
-const useApi = <T>(endpoint: ApiEndpoint, query?: Record<string, string | number>) => {
+const useApi = <T, Q = unknown>(endpoint: ApiEndpoint, query?: Q) => {
   const [data, setData] = useState<T>();
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -11,7 +11,7 @@ const useApi = <T>(endpoint: ApiEndpoint, query?: Record<string, string | number
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const response = await req<T>(endpoint, query);
+        const response = await req<T, Q>(endpoint, query);
         setData(response);
       } catch (error) {
         setIsError(true);
