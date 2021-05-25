@@ -10,12 +10,12 @@ type Props = {
 };
 
 const PokemonCard = ({ pokemon }: Props) => {
-  const { id, name, img, stats, types } = pokemon;
+  const { name, img, stats, types } = pokemon;
 
   const getPokemonColor = (type: string) => `var(--pokemon-${type})`;
 
   return (
-    <div className={s.root} onClick={() => navigate(`pokedex/${id}`)}>
+    <div className={s.root} onClick={() => navigate(`pokedex/${name}`)}>
       <div className={s.infoWrap}>
         <Typography variant="h4" className={s.pokemonName}>
           {name}
