@@ -5,36 +5,34 @@ import { IPokemon } from '../../interfaces/pokemon';
 import Typography from '../Typography';
 import s from './style.module.scss';
 
-type Props = {
+export type Props = {
   pokemon: IPokemon;
 };
 
 const PokemonCard = ({ pokemon }: Props) => {
-  const { name, img, stats, types } = pokemon;
-
   const getPokemonColor = (type: string) => `var(--pokemon-${type})`;
 
-  return (
-    <div className={s.root} onClick={() => navigate(`pokedex/${name}`)}>
+  return pokemon ? (
+    <div className={s.root} onClick={() => navigate(`pokedex/${pokemon.name}`)}>
       <div className={s.infoWrap}>
         <Typography variant="h4" className={s.pokemonName}>
-          {name}
+          {pokemon.name}
         </Typography>
 
         <div className={s.statWrap}>
           <div className={s.statItem}>
-            <div className={s.statValue}>{stats.attack}</div>
+            <div className={s.statValue}>{pokemon.stats.attack}</div>
             Attack
           </div>
 
           <div className={s.statItem}>
-            <div className={s.statValue}>{stats.defense}</div>
+            <div className={s.statValue}>{pokemon.stats.defense}</div>
             Defense
           </div>
         </div>
 
         <div className={s.labelWrap}>
-          {types.map((type) => (
+          {pokemon.types.map((type) => (
             <span key={type} className={cn(s.label, s[type])} style={{ backgroundColor: getPokemonColor(type) }}>
               {type}
             </span>
@@ -42,10 +40,12 @@ const PokemonCard = ({ pokemon }: Props) => {
         </div>
       </div>
 
-      <div className={s.pictureWrap} style={{ backgroundColor: getPokemonColor(types[0]) }}>
-        <img src={img} alt={name} />
+      <div className={s.pictureWrap} style={{ backgroundColor: getPokemonColor(pokemon.types[0]) }}>
+        <img src={pokemon.img} alt={pokemon.name} />
       </div>
     </div>
+  ) : (
+    <></>
   );
 };
 
