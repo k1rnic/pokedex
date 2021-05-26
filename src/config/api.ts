@@ -1,4 +1,4 @@
-import { RouteParams } from '../utils/route';
+import { RouteParams } from '../utils/url';
 
 const config = {
   client: {

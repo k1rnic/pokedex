@@ -3,7 +3,7 @@ import { AppRoute, IRoute } from './interfaces/route';
 import Home from './pages/Home';
 import Pokedex from './pages/Pokedex';
 import PokemonDetails from './pages/PokemonDetails';
-import { RouteParams } from './utils/route';
+import { RouteParams } from './utils/url';
 
 export const ROUTES: IRoute[] = [
   {

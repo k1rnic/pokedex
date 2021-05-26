@@ -22,20 +22,17 @@ type PokemonDataQuery = Partial<
 >;
 
 const Pokedex: FC = () => {
-  const [query, setQuery] = useState<PokemonDataQuery>({
-    limit: 9,
-  });
+  const [searchValue, setSearchValue] = useState('');
+  const query = useMemo<PokemonDataQuery>(() => ({ limit: 9, name: searchValue }), [searchValue]);
+  const urlOptions = useMemo(() => ({ query }), [query]);
 
-  const { data, isLoading, isError } = useApi<IPokemonData, 'getPokemons'>('getPokemons', query);
+  const { data, isLoading, isError } = useApi<IPokemonData, 'getPokemons'>('getPokemons', urlOptions);
 
   const pokemons = useMemo(() => data?.pokemons || [], [data]);
   const totalCount = useMemo(() => data?.total, [data]);
 
-  const handleSearch = (searchValue: string) => {
-    setQuery((state) => ({
-      ...state,
-      name: searchValue,
-    }));
+  const handleSearch = (value: string) => {
+    setSearchValue(value);
   };
 
   return (
@@ -50,11 +47,13 @@ const Pokedex: FC = () => {
       {isError && <span>Something went wrong</span>}
       {isLoading && <span>Loading...</span>}
 
-      <div className={s.pokemonCardsWrap}>
-        {pokemons.map((pokemon) => (
-          <PokemonCard key={pokemon.id} pokemon={pokemon} />
-        ))}
-      </div>
+      {!isLoading && (
+        <div className={s.pokemonCardsWrap}>
+          {pokemons.map((pokemon) => (
+            <PokemonCard key={pokemon.id} pokemon={pokemon} />
+          ))}
+        </div>
+      )}
     </Layout>
   );
 };

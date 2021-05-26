@@ -16,10 +16,10 @@ type Props = {
 };
 
 const PokemonDetails = ({ id }: Props) => {
-  const query = useMemo(() => ({}), []);
   const params = useMemo(() => ({ id }), [id]);
+  const urlOptions = useMemo(() => ({ params }), [params]);
 
-  const { data } = useApi<IPokemonData, 'getPokemonsById'>('getPokemonsById', query, params);
+  const { data } = useApi<IPokemonData, 'getPokemonsById'>('getPokemonsById', urlOptions);
   const pokemon = useMemo(() => data?.pokemons[0] || {}, [data]);
 
   return (
