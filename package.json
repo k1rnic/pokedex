@@ -11,7 +11,9 @@
     "build:dev": "env NODE_ENV=development npx webpack --config webpack.config.js",
     "build:prod": "env NODE_ENV=production npx webpack --config webpack.config.js",
     "format": "npx prettier --check .",
-    "format:write": "npx prettier --write ."
+    "format:write": "npx prettier --write .",
+    "stories": "start-storybook -p 6006",
+    "build-stories": "build-storybook"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -22,6 +24,11 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/react": "^6.2.9",
     "@svgr/webpack": "^5.5.0",
     "@types/axios": "^0.14.0",
     "@types/hookrouter": "^2.2.5",
@@ -29,6 +36,7 @@
     "@types/react-dom": "^17.0.4",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
+    "babel-loader": "^8.2.2",
     "css-loader": "5.0.0",
     "eslint": "^7.26.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -48,7 +56,7 @@
     "sass-loader": "10.0.4",
     "style-loader": "2.0.0",
     "ts-loader": "8.2.0",
-    "typescript": "4.0.3",
+    "typescript": "^4.2.4",
     "url-loader": "^4.1.1",
     "webpack": "4.44.2",
     "webpack-cli": "3.3.12",

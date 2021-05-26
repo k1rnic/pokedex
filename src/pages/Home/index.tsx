@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import React from 'react';
+import React, { FC } from 'react';
 import Button from '../../components/Button';
 import HomeBackground from '../../components/HomeBackground';
 import Layout from '../../components/Layout';

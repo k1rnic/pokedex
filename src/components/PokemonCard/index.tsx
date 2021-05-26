@@ -1,7 +1,9 @@
-import cn from 'classnames';
+import { navigate } from 'hookrouter';
 import React from 'react';
 import { IPokemon } from '../../interfaces/pokemon';
 import Typography from '../Typography';
+import PokemonStat from './PokemonStat';
+import PokemonTypes from './PokemonTypes';
 import s from './style.module.scss';
 
 type Props = {
@@ -9,40 +11,25 @@ type Props = {
 };
 
 const PokemonCard = ({ pokemon }: Props) => {
-  const { name, img, stats, types } = pokemon;
+  const getPokemonColor = (type: string) => `var(--pokemon-${type})`;
 
-  return (
-    <div className={s.root}>
+  return pokemon ? (
+    <div className={s.root} onClick={() => navigate(`pokedex/${pokemon.id}`)}>
       <div className={s.infoWrap}>
         <Typography variant="h4" className={s.pokemonName}>
-          {name}
+          {pokemon.name}
         </Typography>
 
-        <div className={s.statWrap}>
-          <div className={s.statItem}>
-            <div className={s.statValue}>{stats.attack}</div>
-            Attack
-          </div>
-
-          <div className={s.statItem}>
-            <div className={s.statValue}>{stats.defense}</div>
-            Defense
-          </div>
-        </div>
-
-        <div className={s.labelWrap}>
-          {types.map((type) => (
-            <span key={type} className={cn(s.label, s[type])}>
-              {type}
-            </span>
-          ))}
-        </div>
+        <PokemonStat stats={pokemon.stats} />
+        <PokemonTypes types={pokemon.types} />
       </div>
 
-      <div className={s.pictureWrap}>
-        <img src={img} alt={name} />
+      <div className={s.pictureWrap} style={{ backgroundColor: getPokemonColor(pokemon.types[0]) }}>
+        <img src={pokemon.img} alt={pokemon.name} />
       </div>
     </div>
+  ) : (
+    <></>
   );
 };
 
