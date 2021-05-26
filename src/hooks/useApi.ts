@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
-import { ApiEndpoint } from '../config';
+import { ApiRouteParam, ApiRoutes } from '../config';
 import req from '../utils/req';
 
-const useApi = <T, Q = unknown>(endpoint: ApiEndpoint, query?: Q) => {
-  const [data, setData] = useState<T>();
+const useApi = <T, Route extends keyof ApiRoutes>(
+  endpoint: Route,
+  query?: Record<string, string | number>,
+  params?: ApiRouteParam<Route>,
+) => {
+  const [data, setData] = useState<T | null>(null);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -11,7 +15,7 @@ const useApi = <T, Q = unknown>(endpoint: ApiEndpoint, query?: Q) => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const response = await req<T, Q>(endpoint, query);
+        const response = await req<T, Route>(endpoint, query, params);
         setData(response);
       } catch (error) {
         setIsError(true);
@@ -20,7 +24,7 @@ const useApi = <T, Q = unknown>(endpoint: ApiEndpoint, query?: Q) => {
       }
     };
     fetchData();
-  }, [endpoint, query]);
+  }, [endpoint, query, params]);
 
   return { data, isLoading, isError };
 };

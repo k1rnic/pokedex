@@ -3,7 +3,7 @@ import { PropsWithChildren } from 'react';
 export enum AppRoute {
   Home = '/',
   Pokedex = '/pokedex',
-  PokemonDetails = '/pokedex/:name',
+  PokemonDetails = '/pokedex/:id',
   Legendaries = '/legendaries',
   Docs = '/documentation',
 }

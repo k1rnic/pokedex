@@ -12,13 +12,14 @@ interface IPokemonData {
 }
 
 type Props = {
-  name: string;
+  id: string;
 };
 
-const PokemonDetails = ({ name }: Props) => {
-  const query = useMemo(() => ({ name }), [name]);
+const PokemonDetails = ({ id }: Props) => {
+  const query = useMemo(() => ({}), []);
+  const params = useMemo(() => ({ id }), [id]);
 
-  const { data } = useApi<IPokemonData>('getPokemons', query);
+  const { data } = useApi<IPokemonData, 'getPokemonsById'>('getPokemonsById', query, params);
   const pokemon = useMemo(() => data?.pokemons[0] || {}, [data]);
 
   return (

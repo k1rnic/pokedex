@@ -26,7 +26,7 @@ const Pokedex: FC = () => {
     limit: 9,
   });
 
-  const { data, isLoading, isError } = useApi<IPokemonData>('getPokemons', query);
+  const { data, isLoading, isError } = useApi<IPokemonData, 'getPokemons'>('getPokemons', query);
 
   const pokemons = useMemo(() => data?.pokemons || [], [data]);
   const totalCount = useMemo(() => data?.total, [data]);
