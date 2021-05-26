@@ -1,5 +1,3 @@
-import { PropsWithChildren } from 'react';
-
 export enum AppRoute {
   Home = '/',
   Pokedex = '/pokedex',
@@ -11,6 +9,6 @@ export enum AppRoute {
 export interface IRoute {
   label?: string;
   route: AppRoute;
-  component: (props?: PropsWithChildren<any>) => JSX.Element;
+  component: (props?: any) => JSX.Element;
   showInNav: boolean;
 }
