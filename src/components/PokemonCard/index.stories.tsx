@@ -1,7 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import PokemonCard, { Props } from '.';
+import PokemonCard from '.';
+import PokemonTypes from './PokemonTypes';
 
 const DATA = [
   {
@@ -218,12 +219,14 @@ const DATA = [
 
 export default {
   title: 'Components/Pokemon',
-} as Meta<Props>;
+} as Meta;
 
-export const PokemonTypes: Story<Props> = () => {
-  return <PokemonCard pokemon={DATA[0]} />;
+export const PokemonTags: Story = () => {
+  const data = Array.from(new Set(DATA.reduce<string[]>((acc, { types }) => [...acc, ...types], [])));
+
+  return <PokemonTypes types={data} />;
 };
 
-export const PokemonDesktopCard: Story<Props> = () => {
+export const PokemonDesktopCard: Story = () => {
   return <PokemonCard pokemon={DATA[0]} />;
 };

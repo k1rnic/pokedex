@@ -1,11 +1,12 @@
-import cn from 'classnames';
 import { navigate } from 'hookrouter';
 import React from 'react';
 import { IPokemon } from '../../interfaces/pokemon';
 import Typography from '../Typography';
+import PokemonStat from './PokemonStat';
+import PokemonTypes from './PokemonTypes';
 import s from './style.module.scss';
 
-export type Props = {
+type Props = {
   pokemon: IPokemon;
 };
 
@@ -19,25 +20,8 @@ const PokemonCard = ({ pokemon }: Props) => {
           {pokemon.name}
         </Typography>
 
-        <div className={s.statWrap}>
-          <div className={s.statItem}>
-            <div className={s.statValue}>{pokemon.stats.attack}</div>
-            Attack
-          </div>
-
-          <div className={s.statItem}>
-            <div className={s.statValue}>{pokemon.stats.defense}</div>
-            Defense
-          </div>
-        </div>
-
-        <div className={s.labelWrap}>
-          {pokemon.types.map((type) => (
-            <span key={type} className={cn(s.label, s[type])} style={{ backgroundColor: getPokemonColor(type) }}>
-              {type}
-            </span>
-          ))}
-        </div>
+        <PokemonStat stats={pokemon.stats} />
+        <PokemonTypes types={pokemon.types} />
       </div>
 
       <div className={s.pictureWrap} style={{ backgroundColor: getPokemonColor(pokemon.types[0]) }}>
