@@ -1,10 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { Meta, Story } from '@storybook/react/types-6-0';
-import React from 'react';
-import PokemonCard from '.';
-import PokemonTypes from './PokemonTypes';
-
-const DATA = [
+export default [
   {
     name_clean: 'bulbasaur',
     abilities: ['overgrow', 'chlorophyll'],
@@ -216,17 +210,3 @@ const DATA = [
     weight: 29,
   },
 ];
-
-export default {
-  title: 'Components/Pokemon',
-} as Meta;
-
-export const PokemonTags: Story = () => {
-  const data = Array.from(new Set(DATA.reduce<string[]>((acc, { types }) => [...acc, ...types], [])));
-
-  return <PokemonTypes types={data} />;
-};
-
-export const PokemonDesktopCard: Story = () => {
-  return <PokemonCard pokemon={DATA[0]} />;
-};

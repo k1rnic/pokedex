@@ -1,8 +1,8 @@
 import { navigate } from 'hookrouter';
 import React from 'react';
 import { ReactComponent as TeamRocketSvg } from '../../assets/TeamRocket.svg';
-import Button from '../../components/Button';
-import Typography from '../../components/Typography';
+import Button from '../../components/atoms/Button';
+import Typography from '../../components/atoms/Typography';
 import { AppRoute } from '../../interfaces/route';
 import s from './style.module.scss';
 

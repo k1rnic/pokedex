@@ -1,0 +1,15 @@
+.root {
+  display: flex;
+  width: 400px;
+  justify-content: stretch;
+  gap: 1rem;
+  & > div {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+.compact {
+  width: 110px;
+  gap: 0;
+}

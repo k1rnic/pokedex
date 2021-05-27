@@ -1,5 +1,6 @@
-:is(.h1, .h2, .h3, .h4, .h5, .h6) {
+:is(.h1, .h2, .h3, .h4, .h5, .h6, .p, .span) {
   font-weight: normal;
+  margin: 0;
 }
 
 .h1 {
@@ -23,4 +24,9 @@
 
 .p {
   font-size: 16px;
+}
+
+.span {
+  font-size: 12px;
+  font-weight: 400;
 }

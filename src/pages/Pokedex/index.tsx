@@ -1,8 +1,8 @@
 import React, { FC, useMemo, useState } from 'react';
 import Layout from '../../components/Layout';
-import PokemonCard from '../../components/PokemonCard';
+import PokemonCard from '../../components/organisms/Card';
 import SearchBar from '../../components/SearchBar';
-import Typography from '../../components/Typography';
+import Typography from '../../components/atoms/Typography';
 import useApi from '../../hooks/useApi';
 import { IPokemon } from '../../interfaces/pokemon';
 import s from './style.module.scss';

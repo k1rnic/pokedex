@@ -1,0 +1,19 @@
+.root {
+  border-radius: 8px;
+  padding: 1rem;
+  width: max-content;
+  overflow: hidden;
+  position: relative;
+}
+
+.dense {
+  padding: 0.5rem;
+}
+
+.level-1 {
+  box-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
+}
+
+.level-2 {
+  box-shadow: 4px 4px 24px rgba(1, 17, 38, 0.2);
+}

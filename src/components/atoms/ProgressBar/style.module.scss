@@ -1,0 +1,21 @@
+.root {
+  width: 100%;
+  position: relative;
+}
+
+.progress {
+  height: 5px;
+  border-radius: 8px;
+}
+
+.full {
+  width: 100%;
+  background-color: #f6f7f9;
+}
+
+.current {
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
