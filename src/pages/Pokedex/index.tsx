@@ -1,8 +1,9 @@
+import { navigate } from 'hookrouter';
 import React, { FC, useMemo, useState } from 'react';
+import Typography from '../../components/atoms/Typography';
 import Layout from '../../components/Layout';
 import PokemonCard from '../../components/organisms/Card';
 import SearchBar from '../../components/SearchBar';
-import Typography from '../../components/atoms/Typography';
 import useApi from '../../hooks/useApi';
 import { IPokemon } from '../../interfaces/pokemon';
 import s from './style.module.scss';
@@ -24,15 +25,18 @@ type PokemonDataQuery = Partial<
 const Pokedex: FC = () => {
   const [searchValue, setSearchValue] = useState('');
   const query = useMemo<PokemonDataQuery>(() => ({ limit: 9, name: searchValue }), [searchValue]);
-  const urlOptions = useMemo(() => ({ query }), [query]);
 
-  const { data, isLoading, isError } = useApi<IPokemonData, 'getPokemons'>('getPokemons', urlOptions);
+  const { data, isLoading, isError } = useApi<IPokemonData, 'getPokemons'>('getPokemons', query);
 
   const pokemons = useMemo(() => data?.pokemons || [], [data]);
   const totalCount = useMemo(() => data?.total, [data]);
 
   const handleSearch = (value: string) => {
     setSearchValue(value);
+  };
+
+  const handleCardClick = ({ id }: IPokemon) => {
+    navigate(`pokedex/${id}`);
   };
 
   return (
@@ -50,7 +54,7 @@ const Pokedex: FC = () => {
       {!isLoading && (
         <div className={s.pokemonCardsWrap}>
           {pokemons.map((pokemon) => (
-            <PokemonCard key={pokemon.id} pokemon={pokemon} />
+            <PokemonCard key={pokemon.id} pokemon={pokemon} onClick={handleCardClick} />
           ))}
         </div>
       )}

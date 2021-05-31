@@ -19,6 +19,25 @@ const config = {
           pathname: 'api/v1/pokemon/:id',
         },
       },
+      // FAKE
+      createPokemon: {
+        method: 'POST',
+        uri: {
+          pathname: 'api/v1/pokemons',
+        },
+      },
+      updatePokemon: {
+        method: 'PATCH',
+        uri: {
+          pathname: 'api/v1/pokemon/:id',
+        },
+      },
+      deletePokemon: {
+        method: 'DELETE',
+        uri: {
+          pathname: 'api/v1/pokemon/:id',
+        },
+      },
     },
   },
 } as const;

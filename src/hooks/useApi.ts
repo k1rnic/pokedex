@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { ApiRoutes } from '../config/api';
 import request from '../utils/request';
-import { UrlOptions } from '../utils/url';
+import { UriOptions } from '../utils/url';
 
-const useApi = <T, Route extends keyof ApiRoutes>(endpoint: Route, urlOptions: UrlOptions<Route>) => {
+const useApi = <T, Route extends keyof ApiRoutes>(endpoint: Route, urlOptions: UriOptions<Route>['query']) => {
   const [data, setData] = useState<T | null>(null);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
