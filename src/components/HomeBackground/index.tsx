@@ -5,7 +5,7 @@ import { ReactComponent as Pikachu } from '../../assets/Pikachu.svg';
 import { ReactComponent as PokeballBig } from '../../assets/PokeBall1.svg';
 import { ReactComponent as PokeballSmall } from '../../assets/PokeBall2.svg';
 import useParallax from '../../hooks/useParallax';
-import Parallax from '../Parallax';
+import Parallax from '../atoms/Parallax';
 import s from './style.module.scss';
 
 const HomeBackground = () => {

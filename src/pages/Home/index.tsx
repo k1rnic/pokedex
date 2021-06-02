@@ -1,9 +1,9 @@
 import cn from 'classnames';
-import React, { FC } from 'react';
-import Button from '../../components/Button';
+import React from 'react';
+import Button from '../../components/atoms/Button';
 import HomeBackground from '../../components/HomeBackground';
 import Layout from '../../components/Layout';
-import Typography from '../../components/Typography';
+import Typography from '../../components/atoms/Typography';
 import s from './style.module.scss';
 
 const Home = () => (
