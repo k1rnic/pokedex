@@ -1,6 +1,6 @@
 import { navigate } from 'hookrouter';
 import React from 'react';
-import { ReactComponent as TeamRocketSvg } from '../../assets/TeamRocket.svg';
+import TeamRocketImg from '../../assets/TeamRocket.png';
 import Button from '../../components/atoms/Button';
 import Typography from '../../components/atoms/Typography';
 import { AppRoute } from '../../interfaces/route';
@@ -22,7 +22,7 @@ const NotFound = () => {
         return
       </Button>
       <div className={s.frontImg}>
-        <TeamRocketSvg />
+        <img src={TeamRocketImg} alt="Team rocket" />
       </div>
     </div>
   );

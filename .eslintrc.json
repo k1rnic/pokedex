@@ -21,6 +21,8 @@
   },
   "plugins": [],
   "rules": {
+    "no-extraneous-dependencies": "off",
+    "@typescript-eslint/no-var-requires": "off",
     "camelcase": "off",
     "no-use-before-define": "off",
     "no-console": "off",
