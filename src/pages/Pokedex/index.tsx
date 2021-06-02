@@ -1,9 +1,9 @@
 import { navigate } from 'hookrouter';
 import React, { FC, useMemo, useState } from 'react';
+import SearchInput from '../../components/atoms/SearchInput';
 import Typography from '../../components/atoms/Typography';
 import Layout from '../../components/Layout';
 import PokemonCard from '../../components/organisms/Card';
-import SearchBar from '../../components/SearchBar';
 import useApi from '../../hooks/useApi';
 import { IPokemon } from '../../interfaces/pokemon';
 import s from './style.module.scss';
@@ -45,7 +45,7 @@ const Pokedex: FC = () => {
         {totalCount} <b>Pokemons</b> for you to choose your favorite
       </Typography>
       <div className={s.searchWrap}>
-        <SearchBar onSearch={handleSearch} />
+        <SearchInput onSearch={handleSearch} />
       </div>
 
       {isError && <span>Something went wrong</span>}

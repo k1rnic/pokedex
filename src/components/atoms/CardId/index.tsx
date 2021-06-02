@@ -5,7 +5,9 @@ import s from './style.module.scss';
 
 const CardId: FC = ({ children }) => (
   <div className={cn(s.root)}>
-    <Typography variant="p">{children}</Typography>
+    <Typography variant="p" className={s.value}>
+      {children}
+    </Typography>
   </div>
 );
 

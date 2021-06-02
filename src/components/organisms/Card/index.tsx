@@ -2,8 +2,8 @@ import cn from 'classnames';
 import React, { FC } from 'react';
 import { IPokemon } from '../../../interfaces/pokemon';
 import CardAvatar from '../../atoms/CardAvatar';
-import CardTitle from '../../atoms/CardTitle';
 import Paper from '../../atoms/Paper';
+import Typography from '../../atoms/Typography';
 import CardPropList from '../../molecules/CardPropList';
 import CardTagList from '../../molecules/CardTagList';
 import s from './style.module.scss';
@@ -19,7 +19,7 @@ const Card: FC<Props> = ({ pokemon, onClick }) => {
   return (
     <Paper className={cn(s.root)} onClick={() => onClick?.(pokemon)}>
       <div className={s.stat}>
-        <CardTitle compact>{name}</CardTitle>
+        <Typography variant="h4">{name}</Typography>
         <CardPropList compact {...stats} />
         <CardTagList compact tags={types} />
       </div>

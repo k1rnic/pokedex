@@ -1,14 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import Component from '.';
+import Component, { Props } from '.';
 
 export default {
-  title: 'Atoms/CardId',
+  title: 'Atoms/SearchInput',
   component: Component,
-  args: {
-    children: 578,
-  },
-} as Meta;
+} as Meta<Props>;
 
-export const Overview: Story = (args) => <Component {...args} />;
+export const Overview: Story<Props> = (args) => <Component {...args} />;

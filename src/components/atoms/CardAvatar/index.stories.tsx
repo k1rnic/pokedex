@@ -10,7 +10,7 @@ export default {
 } as Meta<Props>;
 
 export const Overview: Story<Props> = () => {
-  const { name, img } = DATA[Math.ceil(Math.random() * DATA.length - 1)];
+  const { name, img, types } = DATA[Math.ceil(Math.random() * DATA.length - 1)];
 
-  return <Component name={name} img={img} />;
+  return <Component name={name} img={img} background={types[0]} />;
 };
