@@ -37,14 +37,6 @@
   }
 }
 
-.input + .label::after {
-  content: none;
-}
-
-.input:focus + .label::before {
-  border-width: 2px;
-}
-
-.input:checked + .label::after {
-  content: '';
+.input:checked + .label::before {
+  background-color: var(--danger);
 }

@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { ReactComponent as ArrowFilterDown } from '../../../assets/ArrowFilter.svg';
 import Typography from '../Typography';
 import s from './style.module.scss';
@@ -7,15 +7,12 @@ import s from './style.module.scss';
 export type Props = {
   text: string;
   open: boolean;
-  onToggle: (value: boolean) => void;
+  onToggle: () => void;
 };
 
 const DropdownHeader: FC<Props> = ({ text, open, onToggle }) => {
-  const [isOpen, setIsOpen] = useState(open);
-
   const handleToggle = () => {
-    setIsOpen((state) => !state);
-    onToggle(!isOpen);
+    onToggle();
   };
 
   return (
@@ -25,7 +22,7 @@ const DropdownHeader: FC<Props> = ({ text, open, onToggle }) => {
       </Typography>
       <ArrowFilterDown
         className={cn(s.arrow, {
-          [s.open]: isOpen,
+          [s.open]: open,
         })}
       />
     </div>
