@@ -2,7 +2,7 @@ import cn from 'classnames';
 import React, { FC, HTMLProps } from 'react';
 import s from './style.module.scss';
 
-type Props = {
+export type Props = {
   dense?: boolean;
   level?: 1 | 2;
 };

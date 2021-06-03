@@ -1,0 +1,49 @@
+.root {
+  user-select: none;
+}
+
+.input {
+  display: none;
+}
+
+.label {
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
+
+  &::before,
+  &::after {
+    position: absolute;
+  }
+
+  &::before {
+    top: 2px;
+    left: 0;
+    content: '';
+    height: 12px;
+    width: 12px;
+    border: 1px solid #212121;
+  }
+
+  &::after {
+    left: 2px;
+    top: 4px;
+    height: 6px;
+    width: 9px;
+    border-left: 2px solid;
+    border-bottom: 2px solid;
+    transform: rotate(-45deg);
+  }
+}
+
+.input + .label::after {
+  content: none;
+}
+
+.input:focus + .label::before {
+  border-width: 2px;
+}
+
+.input:checked + .label::after {
+  content: '';
+}
