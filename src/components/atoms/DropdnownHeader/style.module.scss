@@ -1,0 +1,29 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: space-between;
+  height: 20px;
+  padding: 0 15px;
+  background-color: #f2f2f2;
+  box-shadow: 4px 4px 8px rgba(1, 28, 64, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+
+  &:active {
+    box-shadow: 4px 4px 4px rgba(1, 28, 64, 0.2);
+  }
+}
+
+.title {
+  font-family: Source Sans Pro, sans-serif;
+}
+
+.arrow {
+  transform: rotate(0);
+}
+
+.open {
+  transform: rotate(180deg);
+}

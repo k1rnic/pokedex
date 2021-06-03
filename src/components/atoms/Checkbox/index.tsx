@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-boolean-value */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { ChangeEvent, FC } from 'react';
 import Typography from '../Typography';
