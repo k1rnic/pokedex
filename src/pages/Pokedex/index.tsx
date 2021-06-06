@@ -1,11 +1,14 @@
 import { navigate } from 'hookrouter';
-import React, { FC, useMemo, useState } from 'react';
+import React, { FC, useEffect, useMemo, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import SearchInput from '../../components/atoms/SearchInput';
 import Typography from '../../components/atoms/Typography';
 import Layout from '../../components/Layout';
 import PokemonCard from '../../components/organisms/Card';
 import useApi from '../../hooks/useApi';
 import { IPokemon } from '../../interfaces/pokemon';
+import { fetchPokemonTypes } from '../../store/pokemon/actions';
+import { selectPokemonTypes } from '../../store/selectors';
 import s from './style.module.scss';
 
 interface IPokemonData {
@@ -23,10 +26,12 @@ type PokemonDataQuery = Partial<
 >;
 
 const Pokedex: FC = () => {
+  const dispatch = useDispatch();
   const [searchValue, setSearchValue] = useState('');
   const query = useMemo<PokemonDataQuery>(() => ({ limit: 9, name: searchValue }), [searchValue]);
 
   const { data, isLoading, isError } = useApi<IPokemonData, 'getPokemons'>('getPokemons', query);
+  const pokemonTypes = useSelector(selectPokemonTypes);
 
   const pokemons = useMemo(() => data?.pokemons || [], [data]);
   const totalCount = useMemo(() => data?.total, [data]);
@@ -38,6 +43,10 @@ const Pokedex: FC = () => {
   const handleCardClick = ({ id }: IPokemon) => {
     navigate(`pokedex/${id}`);
   };
+
+  useEffect(() => {
+    dispatch(fetchPokemonTypes());
+  }, []);
 
   return (
     <Layout className={s.root}>
